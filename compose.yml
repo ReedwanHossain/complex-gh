@@ -18,12 +18,14 @@ services:
     restart: always
     build:
       context: ./nginx
+    image: 'rhossain16/nginx:latest'
     ports:
       - '80:80'
 
   api:
     build:
       context: ./server
+    image: 'rhossain16/server:latest'
     environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
@@ -36,12 +38,14 @@ services:
   client:
     build:
       context: ./client
+    image: 'rhossain16/client:latest'
     environment:
       - WDS_SOCKET_PORT=0
 
   worker:
     build:
       context: ./worker
+    image: 'rhossain16/worker:latest'
     environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
