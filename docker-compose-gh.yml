@@ -18,14 +18,14 @@ services:
     restart: always
     build:
       context: ./nginx
-    image: 'ghcr.io/ReedwanHossain/nginx:latest'
+    image: 'ghcr.io/ReedwanHossain/complex-gh/nginx:latest'
     ports:
       - '80:80'
 
   api:
     build:
       context: ./server
-    image: 'ghcr.io/ReedwanHossain/server:latest'
+    image: 'ghcr.io/ReedwanHossain/complex-gh/server:latest'
     environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
@@ -38,14 +38,14 @@ services:
   client:
     build:
       context: ./client
-    image: 'ghcr.io/ReedwanHossain/client:latest'
+    image: 'ghcr.io/ReedwanHossain/complex-gh/client:latest'
     environment:
       - WDS_SOCKET_PORT=0
 
   worker:
     build:
       context: ./worker
-    image: 'ghcr.io/ReedwanHossain/worker:latest'
+    image: 'ghcr.io/ReedwanHossain/complex-gh/worker:latest'
     environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
